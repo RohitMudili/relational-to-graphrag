@@ -196,10 +196,10 @@ graph TB
     Q --> R
 
     %% Styling
-    classDef phase1 fill:#e1f5ff,stroke:#01579b,stroke-width:2px
-    classDef phase2 fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
-    classDef phase3 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
-    classDef database fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef phase1 fill:#e1f5ff,stroke:#01579b,stroke-width:2px,color:#fff
+    classDef phase2 fill:#f3e5f5,stroke:#4a148c,stroke-width:2px,color:#fff
+    classDef phase3 fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px,color:#fff
+    classDef database fill:#fff3e0,stroke:#e65100,stroke-width:2px,color:#fff
 
     class B,C,D,E phase1
     class F,G,H,I,J phase2
@@ -436,6 +436,8 @@ python scripts/run_graph_builder.py
 
 ### Phase 3: Interactive Queries
 
+#### Option 1: Command Line Interface (CLI)
+
 ```bash
 python scripts/run_retrieval.py
 ```
@@ -457,6 +459,26 @@ Query> Show all products from category Beverages
 
 Query> explain
 💡 The system found 12 products in the Beverages category...
+```
+
+#### Option 2: Streamlit Web Interface (Recommended)
+
+```bash
+streamlit run streamlit_app.py
+```
+
+**Features:**
+- 🎨 **Professional UI** - Beautiful, intuitive web interface
+- 🔍 **Query Interface** - Natural language input with real-time results
+- 📊 **Statistics Dashboard** - Visual charts and database metrics
+- 💡 **AI Explanations** - Automatic result explanations
+- 📜 **Query History** - Track and review past queries
+- ⚙️ **Configuration Panel** - Test connections and view settings
+- 📥 **Export Results** - Download results as JSON
+
+**Access at:** http://localhost:8501
+
+See [STREAMLIT_GUIDE.md](STREAMLIT_GUIDE.md) for detailed documentation.
 
 ## 📚 Phase Documentation
 

@@ -48,3 +48,8 @@ mypy==1.8.0
 # Jupyter for examples
 jupyter==1.0.0
 ipykernel==6.28.0
+
+# Streamlit Frontend
+streamlit==1.29.0
+plotly==5.18.0
+streamlit-option-menu==0.3.6
