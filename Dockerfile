@@ -10,11 +10,11 @@ RUN apt-get update && apt-get install -y \
     g++ \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements first for better caching
-COPY requirements.txt .
+# Copy minimal requirements for faster build
+COPY requirements-streamlit.txt .
 
-# Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# Install only essential dependencies for Streamlit app
+RUN pip install --no-cache-dir -r requirements-streamlit.txt
 
 # Copy application code
 COPY . .
