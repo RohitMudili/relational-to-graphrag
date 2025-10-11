@@ -232,7 +232,8 @@ def main():
         else:
             st.warning("⚠️ Not Connected")
             if st.button("Connect Now", use_container_width=True):
-                initialize_orchestrator()
+                if initialize_orchestrator():
+                    st.rerun()
 
         st.divider()
 
