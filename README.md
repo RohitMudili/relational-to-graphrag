@@ -69,23 +69,23 @@ The system operates in **three main phases**, each building upon the previous:
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │                          PHASE 1: ANALYSIS                          │
-│                                                                      │
-│  Relational DB (PostgreSQL)  →  Schema Analyzer  →  Graph Ontology │
+│                                                                     │
+│  Relational DB (PostgreSQL)  →  Schema Analyzer  →  Graph Ontology  │
 │         (Northwind)                + LLM                            │
 └─────────────────────────────────────────────────────────────────────┘
                                     ↓
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      PHASE 2: TRANSFORMATION                         │
-│                                                                      │
-│  Graph Ontology  →  ETL Pipeline  →  Knowledge Graph (Neo4j)       │
+│                      PHASE 2: TRANSFORMATION                        │
+│                                                                     │
+│  Graph Ontology  →  ETL Pipeline  →  Knowledge Graph (Neo4j)        │
 │                    + Embeddings       • Nodes with vectors          │
 │                                       • Relationships               │
 └─────────────────────────────────────────────────────────────────────┘
                                     ↓
 ┌─────────────────────────────────────────────────────────────────────┐
 │                        PHASE 3: RETRIEVAL                           │
-│                                                                      │
-│  Natural Language  →  Agentic System  →  Intelligent Results       │
+│                                                                     │
+│  Natural Language  →  Agentic System  →  Intelligent Results        │
 │      Query            • Vector Search      • Ranked nodes           │
 │                       • Graph Traversal    • Relationships          │
 │                       • Cypher Generation  • Explanations           │
@@ -778,7 +778,8 @@ def infer_from_naming(column_name: str) -> Optional[Relationship]:
 
 ```
 ┌─────────────────────────────────────────────────┐
-│ "Find customers similar to ALFKI"                │
+│ "Find customers similar to ALFKI"               │
+
 └───────────────────┬─────────────────────────────┘
                     │
                     ▼
