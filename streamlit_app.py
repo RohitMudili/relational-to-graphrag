@@ -2,19 +2,18 @@
 Streamlit Frontend for Relational-to-GraphRAG System
 A professional web interface for natural language graph queries
 """
-import streamlit as st
 import sys
 from pathlib import Path
 import json
 import pandas as pd
 from datetime import datetime
 import time
+import streamlit as st
 
-# Add parent directory to path
+# Add parent directory to path before importing local modules
 sys.path.insert(0, str(Path(__file__).parent))
 
 from src.retrieval_agents.orchestrator import AgentOrchestrator, RetrievalResult
-from src.graph_builder.embeddings.embedding_service import EmbeddingService
 from config.config import settings
 
 # Page configuration
@@ -307,10 +306,9 @@ def show_home_page():
     st.markdown("""
     ### How to use this system:
 
-    1. **Connect to Database** - Click "Connect Now" in the sidebar if not connected
-    2. **Go to Query Interface** - Navigate using the sidebar
-    3. **Ask Your Question** - Type in natural language (e.g., "Find customers similar to ALFKI")
-    4. **View Results** - Get intelligent results with explanations
+    1. **Go to Query Interface** - Navigate using the sidebar
+    2. **Ask Your Question** - Type in natural language (e.g., "Find customers similar to ALFKI")
+    3. **View Results** - Get intelligent results with explanations
 
     ### Example Queries:
 
