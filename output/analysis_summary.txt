@@ -1,0 +1,68 @@
+================================================================================
+SCHEMA ANALYSIS SUMMARY
+================================================================================
+
+Database: northwind
+
+Database Statistics:
+  • Total tables: 14
+  • Total columns: 92
+  • Total relationships: 24
+  • Junction tables: 2
+
+Graph Ontology:
+  • Node types: 11
+  • Edge types: 21
+
+Node Types:
+  • Category (from categories)
+    Properties: 3
+  • CustomerType (from customer_demographics)
+    Properties: 1
+  • Customer (from customers)
+    Properties: 10
+  • Employee (from employees)
+    Properties: 17
+  • Order (from orders)
+    Properties: 13
+  • Product (from products)
+    Properties: 9
+  • Region (from region)
+    Properties: 1
+  • Shipper (from shippers)
+    Properties: 2
+  • Supplier (from suppliers)
+    Properties: 11
+  • Territory (from territories)
+    Properties: 2
+  • USState (from us_states)
+    Properties: 3
+
+Edge Types:
+  • employees -REPORTS_TO-> employees
+  • orders -PLACED_BY-> customers
+  • orders -PLACED_BY-> employees
+  • orders -SHIPPED_VIA-> shippers
+  • products -BELONGS_TO-> categories
+  • products -SUPPLIED_BY-> suppliers
+  • territories -BELONGS_TO-> region
+  • customers -REFERS_FRIEND-> customers
+  • orders -IS_RELATED_TO-> orders
+  • products -RELATED_TO-> products
+  • region -ADJACENT_TO-> region
+  • shippers -PARTNERS_WITH-> shippers
+  • suppliers -SUPPLIES_TO-> suppliers
+  • customer_demographics -DESCRIBES-> customers
+  • customers -HAS_DEMOGRAPHICS-> customer_demographics
+  • employees -MANAGES-> territories
+  • territories -MANAGED_BY-> employees
+  • employees -REPORTS_TO-> employees
+  • customer_demographics -HAS_DEMOGRAPHIC-> customers
+  • employees -MANAGES-> territories
+  • orders -CONTAINS-> products
+
+Relationship Breakdown:
+  • Foreign key relationships: 14
+  • Inferred relationships: 10
+
+================================================================================

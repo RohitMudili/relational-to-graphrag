@@ -1,0 +1,331 @@
+{
+  "node_types": [
+    {
+      "label": "Category",
+      "source_table": "categories",
+      "properties": [
+        "category_name",
+        "description",
+        "picture"
+      ],
+      "description": "Node type representing Category entities from categories table"
+    },
+    {
+      "label": "CustomerType",
+      "source_table": "customer_demographics",
+      "properties": [
+        "customer_desc"
+      ],
+      "description": "Node type representing CustomerType entities from customer_demographics table"
+    },
+    {
+      "label": "Customer",
+      "source_table": "customers",
+      "properties": [
+        "company_name",
+        "contact_name",
+        "contact_title",
+        "address",
+        "city",
+        "region",
+        "postal_code",
+        "country",
+        "phone",
+        "fax"
+      ],
+      "description": "Node type representing Customer entities from customers table"
+    },
+    {
+      "label": "Employee",
+      "source_table": "employees",
+      "properties": [
+        "last_name",
+        "first_name",
+        "title",
+        "title_of_courtesy",
+        "birth_date",
+        "hire_date",
+        "address",
+        "city",
+        "region",
+        "postal_code",
+        "country",
+        "home_phone",
+        "extension",
+        "photo",
+        "notes",
+        "reports_to",
+        "photo_path"
+      ],
+      "description": "Node type representing Employee entities from employees table"
+    },
+    {
+      "label": "Order",
+      "source_table": "orders",
+      "properties": [
+        "customer_id",
+        "employee_id",
+        "order_date",
+        "required_date",
+        "shipped_date",
+        "ship_via",
+        "freight",
+        "ship_name",
+        "ship_address",
+        "ship_city",
+        "ship_region",
+        "ship_postal_code",
+        "ship_country"
+      ],
+      "description": "Node type representing Order entities from orders table"
+    },
+    {
+      "label": "Product",
+      "source_table": "products",
+      "properties": [
+        "product_name",
+        "supplier_id",
+        "category_id",
+        "quantity_per_unit",
+        "unit_price",
+        "units_in_stock",
+        "units_on_order",
+        "reorder_level",
+        "discontinued"
+      ],
+      "description": "Node type representing Product entities from products table"
+    },
+    {
+      "label": "Region",
+      "source_table": "region",
+      "properties": [
+        "region_description"
+      ],
+      "description": "Node type representing Region entities from region table"
+    },
+    {
+      "label": "Shipper",
+      "source_table": "shippers",
+      "properties": [
+        "company_name",
+        "phone"
+      ],
+      "description": "Node type representing Shipper entities from shippers table"
+    },
+    {
+      "label": "Supplier",
+      "source_table": "suppliers",
+      "properties": [
+        "company_name",
+        "contact_name",
+        "contact_title",
+        "address",
+        "city",
+        "region",
+        "postal_code",
+        "country",
+        "phone",
+        "fax",
+        "homepage"
+      ],
+      "description": "Node type representing Supplier entities from suppliers table"
+    },
+    {
+      "label": "Territory",
+      "source_table": "territories",
+      "properties": [
+        "territory_description",
+        "region_id"
+      ],
+      "description": "Node type representing Territory entities from territories table"
+    },
+    {
+      "label": "USState",
+      "source_table": "us_states",
+      "properties": [
+        "state_name",
+        "state_abbr",
+        "state_region"
+      ],
+      "description": "Node type representing USState entities from us_states table"
+    }
+  ],
+  "edge_types": [
+    {
+      "label": "REPORTS_TO",
+      "from_node": "employees",
+      "to_node": "employees",
+      "source_relationship": "employees.reports_to",
+      "properties": [],
+      "description": "Relationship from employees to employees"
+    },
+    {
+      "label": "PLACED_BY",
+      "from_node": "orders",
+      "to_node": "customers",
+      "source_relationship": "orders.customer_id",
+      "properties": [],
+      "description": "Relationship from orders to customers"
+    },
+    {
+      "label": "PLACED_BY",
+      "from_node": "orders",
+      "to_node": "employees",
+      "source_relationship": "orders.employee_id",
+      "properties": [],
+      "description": "Relationship from orders to employees"
+    },
+    {
+      "label": "SHIPPED_VIA",
+      "from_node": "orders",
+      "to_node": "shippers",
+      "source_relationship": "orders.ship_via",
+      "properties": [],
+      "description": "Relationship from orders to shippers"
+    },
+    {
+      "label": "BELONGS_TO",
+      "from_node": "products",
+      "to_node": "categories",
+      "source_relationship": "products.category_id",
+      "properties": [],
+      "description": "Relationship from products to categories"
+    },
+    {
+      "label": "SUPPLIED_BY",
+      "from_node": "products",
+      "to_node": "suppliers",
+      "source_relationship": "products.supplier_id",
+      "properties": [],
+      "description": "Relationship from products to suppliers"
+    },
+    {
+      "label": "BELONGS_TO",
+      "from_node": "territories",
+      "to_node": "region",
+      "source_relationship": "territories.region_id",
+      "properties": [],
+      "description": "Relationship from territories to region"
+    },
+    {
+      "label": "REFERS_FRIEND",
+      "from_node": "customers",
+      "to_node": "customers",
+      "source_relationship": "customers.customer_id",
+      "properties": [],
+      "description": "Relationship from customers to customers"
+    },
+    {
+      "label": "IS_RELATED_TO",
+      "from_node": "orders",
+      "to_node": "orders",
+      "source_relationship": "orders.order_id",
+      "properties": [],
+      "description": "Relationship from orders to orders"
+    },
+    {
+      "label": "RELATED_TO",
+      "from_node": "products",
+      "to_node": "products",
+      "source_relationship": "products.product_id",
+      "properties": [],
+      "description": "Relationship from products to products"
+    },
+    {
+      "label": "ADJACENT_TO",
+      "from_node": "region",
+      "to_node": "region",
+      "source_relationship": "region.region_id",
+      "properties": [],
+      "description": "Relationship from region to region"
+    },
+    {
+      "label": "PARTNERS_WITH",
+      "from_node": "shippers",
+      "to_node": "shippers",
+      "source_relationship": "shippers.shipper_id",
+      "properties": [],
+      "description": "Relationship from shippers to shippers"
+    },
+    {
+      "label": "SUPPLIES_TO",
+      "from_node": "suppliers",
+      "to_node": "suppliers",
+      "source_relationship": "suppliers.supplier_id",
+      "properties": [],
+      "description": "Relationship from suppliers to suppliers"
+    },
+    {
+      "label": "DESCRIBES",
+      "from_node": "customer_demographics",
+      "to_node": "customers",
+      "source_relationship": "customer_demographics.None",
+      "properties": [],
+      "description": "Relationship from customer_demographics to customers"
+    },
+    {
+      "label": "HAS_DEMOGRAPHICS",
+      "from_node": "customers",
+      "to_node": "customer_demographics",
+      "source_relationship": "customers.None",
+      "properties": [],
+      "description": "Relationship from customers to customer_demographics"
+    },
+    {
+      "label": "MANAGES",
+      "from_node": "employees",
+      "to_node": "territories",
+      "source_relationship": "employees.None",
+      "properties": [],
+      "description": "Relationship from employees to territories"
+    },
+    {
+      "label": "MANAGED_BY",
+      "from_node": "territories",
+      "to_node": "employees",
+      "source_relationship": "territories.None",
+      "properties": [],
+      "description": "Relationship from territories to employees"
+    },
+    {
+      "label": "REPORTS_TO",
+      "from_node": "employees",
+      "to_node": "employees",
+      "source_relationship": "employees.reports_to",
+      "properties": [],
+      "description": "Relationship from employees to employees"
+    },
+    {
+      "label": "HAS_DEMOGRAPHIC",
+      "from_node": "customer_demographics",
+      "to_node": "customers",
+      "source_relationship": "customer_customer_demo",
+      "properties": [],
+      "description": "Many-to-many relationship via customer_customer_demo"
+    },
+    {
+      "label": "MANAGES",
+      "from_node": "employees",
+      "to_node": "territories",
+      "source_relationship": "employee_territories",
+      "properties": [],
+      "description": "Many-to-many relationship via employee_territories"
+    },
+    {
+      "label": "CONTAINS",
+      "from_node": "orders",
+      "to_node": "products",
+      "source_relationship": "order_details",
+      "properties": [
+        "unit_price",
+        "quantity",
+        "discount"
+      ],
+      "description": "Many-to-many relationship via order_details"
+    }
+  ],
+  "statistics": {
+    "total_node_types": 11,
+    "total_edge_types": 21
+  }
+}

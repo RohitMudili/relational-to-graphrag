@@ -1,0 +1,1336 @@
+{
+  "database_name": "northwind",
+  "tables": [
+    {
+      "name": "categories",
+      "columns": [
+        {
+          "name": "category_id",
+          "data_type": "smallint",
+          "is_nullable": false,
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "category_name",
+          "data_type": "character varying",
+          "is_nullable": false,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 15
+        },
+        {
+          "name": "description",
+          "data_type": "text",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "picture",
+          "data_type": "bytea",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        }
+      ],
+      "primary_keys": [
+        "category_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 8,
+      "is_junction_table": false
+    },
+    {
+      "name": "customer_customer_demo",
+      "columns": [
+        {
+          "name": "customer_id",
+          "data_type": "character varying",
+          "is_nullable": false,
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 5
+        },
+        {
+          "name": "customer_type_id",
+          "data_type": "character varying",
+          "is_nullable": false,
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 5
+        }
+      ],
+      "primary_keys": [
+        "customer_id",
+        "customer_type_id"
+      ],
+      "foreign_keys": [
+        {
+          "constraint_name": "fk_customer_customer_demo_customer_demographics",
+          "from_table": "customer_customer_demo",
+          "from_column": "customer_type_id",
+          "to_table": "customer_demographics",
+          "to_column": "customer_type_id"
+        },
+        {
+          "constraint_name": "fk_customer_customer_demo_customers",
+          "from_table": "customer_customer_demo",
+          "from_column": "customer_id",
+          "to_table": "customers",
+          "to_column": "customer_id"
+        }
+      ],
+      "row_count": 0,
+      "is_junction_table": true
+    },
+    {
+      "name": "customer_demographics",
+      "columns": [
+        {
+          "name": "customer_type_id",
+          "data_type": "character varying",
+          "is_nullable": false,
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 5
+        },
+        {
+          "name": "customer_desc",
+          "data_type": "text",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        }
+      ],
+      "primary_keys": [
+        "customer_type_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 0,
+      "is_junction_table": false
+    },
+    {
+      "name": "customers",
+      "columns": [
+        {
+          "name": "customer_id",
+          "data_type": "character varying",
+          "is_nullable": false,
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 5
+        },
+        {
+          "name": "company_name",
+          "data_type": "character varying",
+          "is_nullable": false,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 40
+        },
+        {
+          "name": "contact_name",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 30
+        },
+        {
+          "name": "contact_title",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 30
+        },
+        {
+          "name": "address",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 60
+        },
+        {
+          "name": "city",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 15
+        },
+        {
+          "name": "region",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 15
+        },
+        {
+          "name": "postal_code",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 10
+        },
+        {
+          "name": "country",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 15
+        },
+        {
+          "name": "phone",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 24
+        },
+        {
+          "name": "fax",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 24
+        }
+      ],
+      "primary_keys": [
+        "customer_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 91,
+      "is_junction_table": false
+    },
+    {
+      "name": "employee_territories",
+      "columns": [
+        {
+          "name": "employee_id",
+          "data_type": "smallint",
+          "is_nullable": false,
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "territory_id",
+          "data_type": "character varying",
+          "is_nullable": false,
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 20
+        }
+      ],
+      "primary_keys": [
+        "employee_id",
+        "territory_id"
+      ],
+      "foreign_keys": [
+        {
+          "constraint_name": "fk_employee_territories_employees",
+          "from_table": "employee_territories",
+          "from_column": "employee_id",
+          "to_table": "employees",
+          "to_column": "employee_id"
+        },
+        {
+          "constraint_name": "fk_employee_territories_territories",
+          "from_table": "employee_territories",
+          "from_column": "territory_id",
+          "to_table": "territories",
+          "to_column": "territory_id"
+        }
+      ],
+      "row_count": 49,
+      "is_junction_table": true
+    },
+    {
+      "name": "employees",
+      "columns": [
+        {
+          "name": "employee_id",
+          "data_type": "smallint",
+          "is_nullable": false,
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "last_name",
+          "data_type": "character varying",
+          "is_nullable": false,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 20
+        },
+        {
+          "name": "first_name",
+          "data_type": "character varying",
+          "is_nullable": false,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 10
+        },
+        {
+          "name": "title",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 30
+        },
+        {
+          "name": "title_of_courtesy",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 25
+        },
+        {
+          "name": "birth_date",
+          "data_type": "date",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "hire_date",
+          "data_type": "date",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "address",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 60
+        },
+        {
+          "name": "city",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 15
+        },
+        {
+          "name": "region",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 15
+        },
+        {
+          "name": "postal_code",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 10
+        },
+        {
+          "name": "country",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 15
+        },
+        {
+          "name": "home_phone",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 24
+        },
+        {
+          "name": "extension",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 4
+        },
+        {
+          "name": "photo",
+          "data_type": "bytea",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "notes",
+          "data_type": "text",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "reports_to",
+          "data_type": "smallint",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "photo_path",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 255
+        }
+      ],
+      "primary_keys": [
+        "employee_id"
+      ],
+      "foreign_keys": [
+        {
+          "constraint_name": "fk_employees_employees",
+          "from_table": "employees",
+          "from_column": "reports_to",
+          "to_table": "employees",
+          "to_column": "employee_id"
+        }
+      ],
+      "row_count": 9,
+      "is_junction_table": false
+    },
+    {
+      "name": "order_details",
+      "columns": [
+        {
+          "name": "order_id",
+          "data_type": "smallint",
+          "is_nullable": false,
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "product_id",
+          "data_type": "smallint",
+          "is_nullable": false,
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "unit_price",
+          "data_type": "real",
+          "is_nullable": false,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "quantity",
+          "data_type": "smallint",
+          "is_nullable": false,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "discount",
+          "data_type": "real",
+          "is_nullable": false,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        }
+      ],
+      "primary_keys": [
+        "order_id",
+        "product_id"
+      ],
+      "foreign_keys": [
+        {
+          "constraint_name": "fk_order_details_orders",
+          "from_table": "order_details",
+          "from_column": "order_id",
+          "to_table": "orders",
+          "to_column": "order_id"
+        },
+        {
+          "constraint_name": "fk_order_details_products",
+          "from_table": "order_details",
+          "from_column": "product_id",
+          "to_table": "products",
+          "to_column": "product_id"
+        }
+      ],
+      "row_count": 2155,
+      "is_junction_table": false
+    },
+    {
+      "name": "orders",
+      "columns": [
+        {
+          "name": "order_id",
+          "data_type": "smallint",
+          "is_nullable": false,
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "customer_id",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 5
+        },
+        {
+          "name": "employee_id",
+          "data_type": "smallint",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "order_date",
+          "data_type": "date",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "required_date",
+          "data_type": "date",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "shipped_date",
+          "data_type": "date",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "ship_via",
+          "data_type": "smallint",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "freight",
+          "data_type": "real",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "ship_name",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 40
+        },
+        {
+          "name": "ship_address",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 60
+        },
+        {
+          "name": "ship_city",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 15
+        },
+        {
+          "name": "ship_region",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 15
+        },
+        {
+          "name": "ship_postal_code",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 10
+        },
+        {
+          "name": "ship_country",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 15
+        }
+      ],
+      "primary_keys": [
+        "order_id"
+      ],
+      "foreign_keys": [
+        {
+          "constraint_name": "fk_orders_customers",
+          "from_table": "orders",
+          "from_column": "customer_id",
+          "to_table": "customers",
+          "to_column": "customer_id"
+        },
+        {
+          "constraint_name": "fk_orders_employees",
+          "from_table": "orders",
+          "from_column": "employee_id",
+          "to_table": "employees",
+          "to_column": "employee_id"
+        },
+        {
+          "constraint_name": "fk_orders_shippers",
+          "from_table": "orders",
+          "from_column": "ship_via",
+          "to_table": "shippers",
+          "to_column": "shipper_id"
+        }
+      ],
+      "row_count": 830,
+      "is_junction_table": false
+    },
+    {
+      "name": "products",
+      "columns": [
+        {
+          "name": "product_id",
+          "data_type": "smallint",
+          "is_nullable": false,
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "product_name",
+          "data_type": "character varying",
+          "is_nullable": false,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 40
+        },
+        {
+          "name": "supplier_id",
+          "data_type": "smallint",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "category_id",
+          "data_type": "smallint",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "quantity_per_unit",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 20
+        },
+        {
+          "name": "unit_price",
+          "data_type": "real",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "units_in_stock",
+          "data_type": "smallint",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "units_on_order",
+          "data_type": "smallint",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "reorder_level",
+          "data_type": "smallint",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "discontinued",
+          "data_type": "integer",
+          "is_nullable": false,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        }
+      ],
+      "primary_keys": [
+        "product_id"
+      ],
+      "foreign_keys": [
+        {
+          "constraint_name": "fk_products_categories",
+          "from_table": "products",
+          "from_column": "category_id",
+          "to_table": "categories",
+          "to_column": "category_id"
+        },
+        {
+          "constraint_name": "fk_products_suppliers",
+          "from_table": "products",
+          "from_column": "supplier_id",
+          "to_table": "suppliers",
+          "to_column": "supplier_id"
+        }
+      ],
+      "row_count": 77,
+      "is_junction_table": false
+    },
+    {
+      "name": "region",
+      "columns": [
+        {
+          "name": "region_id",
+          "data_type": "smallint",
+          "is_nullable": false,
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "region_description",
+          "data_type": "character varying",
+          "is_nullable": false,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 60
+        }
+      ],
+      "primary_keys": [
+        "region_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 4,
+      "is_junction_table": false
+    },
+    {
+      "name": "shippers",
+      "columns": [
+        {
+          "name": "shipper_id",
+          "data_type": "smallint",
+          "is_nullable": false,
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "company_name",
+          "data_type": "character varying",
+          "is_nullable": false,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 40
+        },
+        {
+          "name": "phone",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 24
+        }
+      ],
+      "primary_keys": [
+        "shipper_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 6,
+      "is_junction_table": false
+    },
+    {
+      "name": "suppliers",
+      "columns": [
+        {
+          "name": "supplier_id",
+          "data_type": "smallint",
+          "is_nullable": false,
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "company_name",
+          "data_type": "character varying",
+          "is_nullable": false,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 40
+        },
+        {
+          "name": "contact_name",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 30
+        },
+        {
+          "name": "contact_title",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 30
+        },
+        {
+          "name": "address",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 60
+        },
+        {
+          "name": "city",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 15
+        },
+        {
+          "name": "region",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 15
+        },
+        {
+          "name": "postal_code",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 10
+        },
+        {
+          "name": "country",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 15
+        },
+        {
+          "name": "phone",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 24
+        },
+        {
+          "name": "fax",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 24
+        },
+        {
+          "name": "homepage",
+          "data_type": "text",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        }
+      ],
+      "primary_keys": [
+        "supplier_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 29,
+      "is_junction_table": false
+    },
+    {
+      "name": "territories",
+      "columns": [
+        {
+          "name": "territory_id",
+          "data_type": "character varying",
+          "is_nullable": false,
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 20
+        },
+        {
+          "name": "territory_description",
+          "data_type": "character varying",
+          "is_nullable": false,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 60
+        },
+        {
+          "name": "region_id",
+          "data_type": "smallint",
+          "is_nullable": false,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        }
+      ],
+      "primary_keys": [
+        "territory_id"
+      ],
+      "foreign_keys": [
+        {
+          "constraint_name": "fk_territories_region",
+          "from_table": "territories",
+          "from_column": "region_id",
+          "to_table": "region",
+          "to_column": "region_id"
+        }
+      ],
+      "row_count": 53,
+      "is_junction_table": false
+    },
+    {
+      "name": "us_states",
+      "columns": [
+        {
+          "name": "state_id",
+          "data_type": "smallint",
+          "is_nullable": false,
+          "is_primary_key": true,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": null
+        },
+        {
+          "name": "state_name",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 100
+        },
+        {
+          "name": "state_abbr",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 2
+        },
+        {
+          "name": "state_region",
+          "data_type": "character varying",
+          "is_nullable": true,
+          "is_primary_key": false,
+          "is_foreign_key": false,
+          "default_value": null,
+          "max_length": 50
+        }
+      ],
+      "primary_keys": [
+        "state_id"
+      ],
+      "foreign_keys": [],
+      "row_count": 51,
+      "is_junction_table": false
+    }
+  ],
+  "relationships": [
+    {
+      "from_table": "customer_customer_demo",
+      "to_table": "customer_demographics",
+      "relationship_type": "many_to_one",
+      "source": "foreign_key",
+      "from_column": "customer_type_id",
+      "to_column": "customer_type_id",
+      "constraint_name": "fk_customer_customer_demo_customer_demographics",
+      "confidence": 1.0
+    },
+    {
+      "from_table": "customer_customer_demo",
+      "to_table": "customers",
+      "relationship_type": "many_to_one",
+      "source": "foreign_key",
+      "from_column": "customer_id",
+      "to_column": "customer_id",
+      "constraint_name": "fk_customer_customer_demo_customers",
+      "confidence": 1.0
+    },
+    {
+      "from_table": "employee_territories",
+      "to_table": "employees",
+      "relationship_type": "many_to_one",
+      "source": "foreign_key",
+      "from_column": "employee_id",
+      "to_column": "employee_id",
+      "constraint_name": "fk_employee_territories_employees",
+      "confidence": 1.0
+    },
+    {
+      "from_table": "employee_territories",
+      "to_table": "territories",
+      "relationship_type": "many_to_one",
+      "source": "foreign_key",
+      "from_column": "territory_id",
+      "to_column": "territory_id",
+      "constraint_name": "fk_employee_territories_territories",
+      "confidence": 1.0
+    },
+    {
+      "from_table": "employees",
+      "to_table": "employees",
+      "relationship_type": "many_to_one",
+      "source": "foreign_key",
+      "from_column": "reports_to",
+      "to_column": "employee_id",
+      "constraint_name": "fk_employees_employees",
+      "confidence": 1.0
+    },
+    {
+      "from_table": "order_details",
+      "to_table": "orders",
+      "relationship_type": "many_to_one",
+      "source": "foreign_key",
+      "from_column": "order_id",
+      "to_column": "order_id",
+      "constraint_name": "fk_order_details_orders",
+      "confidence": 1.0
+    },
+    {
+      "from_table": "order_details",
+      "to_table": "products",
+      "relationship_type": "many_to_one",
+      "source": "foreign_key",
+      "from_column": "product_id",
+      "to_column": "product_id",
+      "constraint_name": "fk_order_details_products",
+      "confidence": 1.0
+    },
+    {
+      "from_table": "orders",
+      "to_table": "customers",
+      "relationship_type": "many_to_one",
+      "source": "foreign_key",
+      "from_column": "customer_id",
+      "to_column": "customer_id",
+      "constraint_name": "fk_orders_customers",
+      "confidence": 1.0
+    },
+    {
+      "from_table": "orders",
+      "to_table": "employees",
+      "relationship_type": "many_to_one",
+      "source": "foreign_key",
+      "from_column": "employee_id",
+      "to_column": "employee_id",
+      "constraint_name": "fk_orders_employees",
+      "confidence": 1.0
+    },
+    {
+      "from_table": "orders",
+      "to_table": "shippers",
+      "relationship_type": "many_to_one",
+      "source": "foreign_key",
+      "from_column": "ship_via",
+      "to_column": "shipper_id",
+      "constraint_name": "fk_orders_shippers",
+      "confidence": 1.0
+    },
+    {
+      "from_table": "products",
+      "to_table": "categories",
+      "relationship_type": "many_to_one",
+      "source": "foreign_key",
+      "from_column": "category_id",
+      "to_column": "category_id",
+      "constraint_name": "fk_products_categories",
+      "confidence": 1.0
+    },
+    {
+      "from_table": "products",
+      "to_table": "suppliers",
+      "relationship_type": "many_to_one",
+      "source": "foreign_key",
+      "from_column": "supplier_id",
+      "to_column": "supplier_id",
+      "constraint_name": "fk_products_suppliers",
+      "confidence": 1.0
+    },
+    {
+      "from_table": "territories",
+      "to_table": "region",
+      "relationship_type": "many_to_one",
+      "source": "foreign_key",
+      "from_column": "region_id",
+      "to_column": "region_id",
+      "constraint_name": "fk_territories_region",
+      "confidence": 1.0
+    },
+    {
+      "from_table": "customers",
+      "to_table": "customers",
+      "relationship_type": "many_to_one",
+      "source": "naming_convention",
+      "from_column": "customer_id",
+      "to_column": null,
+      "constraint_name": null,
+      "confidence": 0.8
+    },
+    {
+      "from_table": "orders",
+      "to_table": "orders",
+      "relationship_type": "many_to_one",
+      "source": "naming_convention",
+      "from_column": "order_id",
+      "to_column": null,
+      "constraint_name": null,
+      "confidence": 0.8
+    },
+    {
+      "from_table": "products",
+      "to_table": "products",
+      "relationship_type": "many_to_one",
+      "source": "naming_convention",
+      "from_column": "product_id",
+      "to_column": null,
+      "constraint_name": null,
+      "confidence": 0.8
+    },
+    {
+      "from_table": "region",
+      "to_table": "region",
+      "relationship_type": "many_to_one",
+      "source": "naming_convention",
+      "from_column": "region_id",
+      "to_column": null,
+      "constraint_name": null,
+      "confidence": 0.8
+    },
+    {
+      "from_table": "shippers",
+      "to_table": "shippers",
+      "relationship_type": "many_to_one",
+      "source": "naming_convention",
+      "from_column": "shipper_id",
+      "to_column": null,
+      "constraint_name": null,
+      "confidence": 0.8
+    },
+    {
+      "from_table": "suppliers",
+      "to_table": "suppliers",
+      "relationship_type": "many_to_one",
+      "source": "naming_convention",
+      "from_column": "supplier_id",
+      "to_column": null,
+      "constraint_name": null,
+      "confidence": 0.8
+    },
+    {
+      "from_table": "customer_demographics",
+      "to_table": "customers",
+      "relationship_type": "many_to_many",
+      "source": "junction_table",
+      "from_column": null,
+      "to_column": null,
+      "constraint_name": "via_customer_customer_demo",
+      "confidence": 1.0
+    },
+    {
+      "from_table": "customers",
+      "to_table": "customer_demographics",
+      "relationship_type": "many_to_many",
+      "source": "junction_table",
+      "from_column": null,
+      "to_column": null,
+      "constraint_name": "via_customer_customer_demo",
+      "confidence": 1.0
+    },
+    {
+      "from_table": "employees",
+      "to_table": "territories",
+      "relationship_type": "many_to_many",
+      "source": "junction_table",
+      "from_column": null,
+      "to_column": null,
+      "constraint_name": "via_employee_territories",
+      "confidence": 1.0
+    },
+    {
+      "from_table": "territories",
+      "to_table": "employees",
+      "relationship_type": "many_to_many",
+      "source": "junction_table",
+      "from_column": null,
+      "to_column": null,
+      "constraint_name": "via_employee_territories",
+      "confidence": 1.0
+    },
+    {
+      "from_table": "employees",
+      "to_table": "employees",
+      "relationship_type": "one_to_many",
+      "source": "foreign_key",
+      "from_column": "reports_to",
+      "to_column": "employee_id",
+      "constraint_name": "fk_employees_employees",
+      "confidence": 1.0
+    }
+  ],
+  "statistics": {
+    "total_tables": 14,
+    "total_columns": 92,
+    "total_relationships": 24,
+    "junction_tables": 2
+  }
+}
