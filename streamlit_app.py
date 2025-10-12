@@ -212,6 +212,9 @@ def main():
     st.markdown('<h1 class="main-header">🔍 GraphRAG Query System</h1>', unsafe_allow_html=True)
     st.markdown("**Natural Language Interface for Knowledge Graph Exploration**")
 
+    # Helpful instruction banner
+    st.info("👈 **Quick Start:** Navigate to **'🔍 Query Interface'** in the left sidebar to start asking questions in natural language!")
+
     # Sidebar
     with st.sidebar:
         st.image("https://img.icons8.com/fluency/96/000000/graph.png", width=80)

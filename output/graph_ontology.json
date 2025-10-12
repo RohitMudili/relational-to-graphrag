@@ -208,7 +208,7 @@
       "description": "Relationship from territories to region"
     },
     {
-      "label": "REFERS_FRIEND",
+      "label": "REFERS",
       "from_node": "customers",
       "to_node": "customers",
       "source_relationship": "customers.customer_id",

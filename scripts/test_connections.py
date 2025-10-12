@@ -21,13 +21,14 @@ def test_postgres_connection():
     console.print("\n[bold blue]Testing PostgreSQL Connection...[/bold blue]")
 
     try:
-        # Connect to PostgreSQL
+        # Connect to PostgreSQL (with SSL support for cloud databases)
         conn = psycopg2.connect(
             host=settings.postgres.host,
             port=settings.postgres.port,
             database=settings.postgres.database,
             user=settings.postgres.user,
-            password=settings.postgres.password
+            password=settings.postgres.password,
+            sslmode='require'  # Required for Neon.tech and other cloud providers
         )
         cursor = conn.cursor()
 

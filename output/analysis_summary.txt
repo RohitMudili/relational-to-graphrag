@@ -2,7 +2,7 @@
 SCHEMA ANALYSIS SUMMARY
 ================================================================================
 
-Database: northwind
+Database: neondb
 
 Database Statistics:
   • Total tables: 14
@@ -46,7 +46,7 @@ Edge Types:
   • products -BELONGS_TO-> categories
   • products -SUPPLIED_BY-> suppliers
   • territories -BELONGS_TO-> region
-  • customers -REFERS_FRIEND-> customers
+  • customers -REFERS-> customers
   • orders -IS_RELATED_TO-> orders
   • products -RELATED_TO-> products
   • region -ADJACENT_TO-> region

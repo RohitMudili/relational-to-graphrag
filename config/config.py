@@ -12,13 +12,16 @@ from dotenv import load_dotenv
 _env_path = Path(__file__).parent.parent / ".env"
 if _env_path.exists():
     load_dotenv(_env_path, override=True)
+else:
+    # Try loading from current directory as fallback
+    load_dotenv(override=True)
 
 
 class PostgresConfig(BaseSettings):
     """PostgreSQL database configuration"""
     host: str = Field(default="localhost")
     port: int = Field(default=5432)
-    db: str = Field(default="northwind", alias="database")
+    db: str = Field(default="neondb", alias="database")  # Changed default to neondb
     user: str = Field(default="postgres")
     password: str = Field(default="postgres123")
 
@@ -39,9 +42,13 @@ class PostgresConfig(BaseSettings):
 
 class Neo4jConfig(BaseSettings):
     """Neo4j database configuration"""
-    uri: str = Field(default="bolt://localhost:7687", env="NEO4J_URI")
-    user: str = Field(default="neo4j", env="NEO4J_USER")
-    password: str = Field(default="neo4jpassword", env="NEO4J_PASSWORD")
+    uri: str = Field(default="bolt://localhost:7687")
+    user: str = Field(default="neo4j")
+    password: str = Field(default="neo4jpassword")
+
+    class Config:
+        env_prefix = "NEO4J_"
+        case_sensitive = False
 
 
 class NeptuneConfig(BaseSettings):
