@@ -141,10 +141,27 @@ Database Schema:
 Query: {query}
 
 Available strategies:
-1. VECTOR_SEARCH: Semantic similarity search (best for "find similar", "like this", "related to")
-2. GRAPH_TRAVERSAL: Relationship exploration (best for "connected", "path between", "neighbors", "hierarchy")
-3. CYPHER_QUERY: Complex logical queries (best for filtering, aggregation, counting, "all X where Y")
-4. HYBRID: Combination of strategies (when query needs multiple approaches)
+1. VECTOR_SEARCH: Semantic similarity search
+   - Best for: "find similar", "like this", "related to", "resembles"
+   - Returns: Nodes with similar embeddings
+
+2. GRAPH_TRAVERSAL: Relationship exploration
+   - Best for: "connected", "path between", "neighbors", "reports to"
+   - Returns: Connected nodes and relationships
+   - Requires: Specific entity names or IDs as starting points
+
+3. CYPHER_QUERY: Complex logical queries
+   - Best for: "how many", "count", "total", "all", "list", "which", "where", filtering, aggregation
+   - Returns: Structured data matching conditions
+   - Use for: Counting, filtering by properties, aggregations, listing all of something
+
+4. HYBRID: Combination of strategies
+   - Best for: Queries needing multiple approaches
+
+IMPORTANT:
+- Use CYPHER_QUERY for ANY counting, aggregation, or "how many" questions
+- Use GRAPH_TRAVERSAL only when exploring relationships from specific known entities
+- Use VECTOR_SEARCH only for semantic similarity
 
 Respond with JSON:
 {{
