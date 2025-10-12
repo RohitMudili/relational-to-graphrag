@@ -1,5 +1,1 @@
-# System packages required for Streamlit Cloud
-# These are installed via apt-get before Python packages
-
-# Required for psycopg2-binary
 libpq-dev
