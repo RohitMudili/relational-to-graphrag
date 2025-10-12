@@ -86,13 +86,17 @@ Database Schema:
 Natural Language Question:
 {natural_language_query}
 
-Generate a Cypher query that answers this question. Return ONLY the Cypher query, no explanation.
-Make sure to:
-- Use MATCH clauses appropriately
-- Use WHERE for filtering
-- Use RETURN to specify what to return
-- Limit results to a reasonable number (e.g., LIMIT 10 unless user specifies otherwise)
-- Handle potential NULL values
+IMPORTANT GUIDELINES:
+- Use the EXACT property names shown in the schema above
+- Property names are case-sensitive (use the exact casing from schema)
+- For date filtering, check the actual property name (could be OrderDate, order_date, etc.)
+- For counting, use COUNT() function and return as a named result
+- Return ONLY the Cypher query, no explanation or markdown
+- Do NOT add LIMIT clauses to counting queries
+
+Examples:
+- "How many orders?" → MATCH (o:Order) RETURN COUNT(o) as numberOfOrders
+- "Orders in 1998" → MATCH (o:Order) WHERE o.OrderDate CONTAINS '1998' RETURN COUNT(o) as count
 
 Cypher Query:"""
 
@@ -107,6 +111,9 @@ Cypher Query:"""
         )
 
         cypher_query = response.choices[0].message.content.strip()
+
+        # Debug: Print generated query
+        print(f"[DEBUG] Generated Cypher: {cypher_query}")
 
         # Clean up markdown code blocks if present
         if "```" in cypher_query:
