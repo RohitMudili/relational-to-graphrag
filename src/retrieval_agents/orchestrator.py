@@ -147,7 +147,32 @@ class AgentOrchestrator:
         top_k = strategy.parameters.get("top_k", top_k)
         min_score = strategy.parameters.get("min_score", min_score)
 
-        # Search using text query
+        # Check if this is a "similar to X" query
+        if "similar to" in query.lower() or "like" in query.lower():
+            # Extract reference node ID
+            node_info = self._extract_node_identifiers(query)
+            if node_info.get("node_ids"):
+                reference_id = node_info["node_ids"][0]
+                print(f"   Finding nodes similar to: {reference_id}")
+
+                # Get the reference node
+                reference_node = self.vector_search.get_node_by_id(reference_id)
+                if reference_node and reference_node.get("properties", {}).get("embedding"):
+                    # Use the reference node's embedding to find similar nodes
+                    results = self.vector_search.search_similar_nodes(
+                        reference_node["properties"]["embedding"],
+                        node_label=node_label,
+                        top_k=top_k + 1,  # +1 to exclude the reference node itself
+                        min_score=min_score
+                    )
+                    # Filter out the reference node from results
+                    results = [r for r in results if r.get("node_id") != reference_id][:top_k]
+                    print(f"   Found {len(results)} similar nodes")
+                    return results
+                else:
+                    print(f"   Warning: Could not find reference node {reference_id}")
+
+        # Default: Search using text query
         results = self.vector_search.search_by_text(
             query,
             self.embedding_service,

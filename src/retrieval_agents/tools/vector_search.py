@@ -172,22 +172,28 @@ class VectorSearchTool:
         )
 
     def get_node_by_id(self, node_id: str) -> Optional[Dict[str, Any]]:
-        """Get a specific node by its ID"""
+        """Get a specific node by its ID (supports multiple ID formats)"""
         with self.driver.session() as session:
-            query = """
-            MATCH (n {node_id: $node_id})
-            RETURN n, labels(n) as labels
-            """
+            # Try multiple ways to find the node
+            queries = [
+                # Try exact node_id match
+                ("MATCH (n {node_id: $node_id}) RETURN n, labels(n) as labels", {"node_id": node_id}),
+                # Try source_pk match
+                ("MATCH (n {source_pk: $source_pk}) RETURN n, labels(n) as labels", {"source_pk": node_id}),
+                # Try with table prefix (e.g., customers:ALFKI)
+                ("MATCH (n) WHERE n.node_id CONTAINS $partial_id RETURN n, labels(n) as labels LIMIT 1", {"partial_id": node_id})
+            ]
 
-            result = session.run(query, node_id=node_id)
-            record = result.single()
+            for query, params in queries:
+                result = session.run(query, params)
+                record = result.single()
 
-            if record:
-                node = record["n"]
-                return {
-                    "node_id": node.get("node_id"),
-                    "label": record["labels"][0] if record["labels"] else "Unknown",
-                    "properties": dict(node)
-                }
+                if record:
+                    node = record["n"]
+                    return {
+                        "node_id": node.get("node_id"),
+                        "label": record["labels"][0] if record["labels"] else "Unknown",
+                        "properties": dict(node)
+                    }
 
             return None
