@@ -16,6 +16,18 @@ else:
     # Try loading from current directory as fallback
     load_dotenv(override=True)
 
+# Check if running in Streamlit Cloud and load secrets
+try:
+    import streamlit as st
+    if hasattr(st, 'secrets') and len(st.secrets) > 0:
+        # Load Streamlit secrets into environment variables
+        for key, value in st.secrets.items():
+            if key not in os.environ:  # Don't override existing env vars
+                os.environ[key] = str(value)
+except (ImportError, FileNotFoundError, RuntimeError):
+    # Not running in Streamlit or secrets not available
+    pass
+
 
 class PostgresConfig(BaseSettings):
     """PostgreSQL database configuration"""
