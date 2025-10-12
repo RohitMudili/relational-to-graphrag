@@ -332,7 +332,9 @@ def show_home_page():
     - "Show all products in the Beverages category"
     - "What is the reporting structure for employees?"
     - "How many orders were placed in 1997?"
-    - "Find the path between customer ALFKI and product Chai"
+    - "Tell me about any 2 employees?"
+    - "Name all the nodes"
+    - "Name 3 customers and their addresses"
     """)
 
     st.divider()
