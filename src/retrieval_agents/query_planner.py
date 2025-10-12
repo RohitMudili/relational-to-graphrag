@@ -160,8 +160,10 @@ Available strategies:
 
 IMPORTANT:
 - Use CYPHER_QUERY for ANY counting, aggregation, or "how many" questions
-- Use GRAPH_TRAVERSAL only when exploring relationships from specific known entities
+- Use CYPHER_QUERY for "show all", "what is the structure", "list all relationships", "reporting structure" queries
+- Use GRAPH_TRAVERSAL only when exploring relationships from specific known entities (requires specific entity names or IDs)
 - Use VECTOR_SEARCH only for semantic similarity
+- If the query doesn't mention specific entity names/IDs, use CYPHER_QUERY not GRAPH_TRAVERSAL
 
 Respond with JSON:
 {{
