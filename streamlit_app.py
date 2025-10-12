@@ -324,6 +324,19 @@ def show_home_page():
 
     st.divider()
 
+    # Example Queries
+    st.markdown("## 💡 Example Queries")
+
+    st.markdown("""
+    - "Find customers similar to ALFKI"
+    - "Show all products in the Beverages category"
+    - "What is the reporting structure for employees?"
+    - "How many orders were placed in 1997?"
+    - "Find the path between customer ALFKI and product Chai"
+    """)
+
+    st.divider()
+
     # Quick Start
     st.markdown("## 🚀 Quick Start")
 
@@ -333,14 +346,6 @@ def show_home_page():
     1. **Go to Query Interface** - Navigate using the sidebar
     2. **Ask Your Question** - Type in natural language (e.g., "Find customers similar to ALFKI")
     3. **View Results** - Get intelligent results with explanations
-
-    ### Example Queries:
-
-    - "Find customers similar to ALFKI"
-    - "Show all products in the Beverages category"
-    - "What is the reporting structure for employees?"
-    - "How many orders were placed in 1997?"
-    - "Find the path between customer ALFKI and product Chai"
     """)
 
     # Recent activity
