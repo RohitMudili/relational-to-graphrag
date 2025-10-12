@@ -413,14 +413,16 @@ def show_query_page(top_k, min_score, max_depth):
 
                 # Display results
                 st.success(f"✅ Query executed in {execution_time:.2f}s")
-                format_result_display(result)
 
-                # Generate explanation
+                # Generate explanation FIRST
                 with st.spinner("💭 Generating explanation..."):
                     explanation = st.session_state.orchestrator.explain_results(result)
 
                 st.markdown("### 💡 AI Explanation")
                 st.info(explanation)
+
+                # Then display results
+                format_result_display(result)
 
                 # Download option
                 result_json = json.dumps(result.to_dict(), indent=2, default=str)
