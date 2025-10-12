@@ -45,3 +45,4 @@ Thumbs.db
 
 # Docker volumes (local data)
 docker/volumes/
+streamlit_secrets.toml
