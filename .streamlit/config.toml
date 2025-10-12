@@ -1,0 +1,36 @@
+# Streamlit Configuration for Cloud Deployment
+
+[server]
+# Run in headless mode (no browser auto-open)
+headless = true
+
+# Port configuration
+port = 8501
+
+# Disable CORS for cloud deployment
+enableCORS = false
+
+# Enable WebSocket compression
+enableWebsocketCompression = true
+
+# File watcher type (poll is more reliable on cloud)
+fileWatcherType = "poll"
+
+[browser]
+# Don't try to open browser automatically
+gatherUsageStats = false
+
+[theme]
+# Custom theme matching your branding
+primaryColor = "#667eea"
+backgroundColor = "#ffffff"
+secondaryBackgroundColor = "#f0f2f6"
+textColor = "#262730"
+font = "sans serif"
+
+[client]
+# Show error details for debugging
+showErrorDetails = true
+
+# Toolbar mode
+toolbarMode = "minimal"
