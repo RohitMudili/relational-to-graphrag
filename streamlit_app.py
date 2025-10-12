@@ -17,8 +17,12 @@ try:
     if hasattr(st, 'secrets') and len(st.secrets) > 0:
         for key, value in st.secrets.items():
             os.environ[key] = str(value)
-except (FileNotFoundError, RuntimeError):
+        # Debug: Show secrets were loaded
+        print(f"[DEBUG] Loaded {len(st.secrets)} secrets into environment")
+        print(f"[DEBUG] NEO4J_URI from secrets: {os.environ.get('NEO4J_URI', 'NOT SET')}")
+except (FileNotFoundError, RuntimeError) as e:
     # Not running in Streamlit Cloud or secrets not available
+    print(f"[DEBUG] Could not load secrets: {e}")
     pass
 
 # Add parent directory to path before importing local modules
@@ -26,6 +30,11 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from src.retrieval_agents.orchestrator import AgentOrchestrator, RetrievalResult
 from config.config import settings
+
+# Debug: Show what config loaded
+print(f"[DEBUG] Config loaded - Neo4j URI: {settings.neo4j.uri}")
+print(f"[DEBUG] Config loaded - Neo4j User: {settings.neo4j.user}")
+print(f"[DEBUG] Config loaded - Postgres Host: {settings.postgres.host}")
 
 # Page configuration
 st.set_page_config(
