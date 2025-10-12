@@ -9,24 +9,13 @@ from pydantic import Field
 from dotenv import load_dotenv
 
 # Load .env file FIRST before any settings classes are instantiated
+# Note: Streamlit app loads st.secrets into os.environ before importing this module
 _env_path = Path(__file__).parent.parent / ".env"
 if _env_path.exists():
     load_dotenv(_env_path, override=True)
 else:
     # Try loading from current directory as fallback
     load_dotenv(override=True)
-
-# Check if running in Streamlit Cloud and load secrets
-try:
-    import streamlit as st
-    if hasattr(st, 'secrets') and len(st.secrets) > 0:
-        # Load Streamlit secrets into environment variables
-        for key, value in st.secrets.items():
-            if key not in os.environ:  # Don't override existing env vars
-                os.environ[key] = str(value)
-except (ImportError, FileNotFoundError, RuntimeError):
-    # Not running in Streamlit or secrets not available
-    pass
 
 
 class PostgresConfig(BaseSettings):
