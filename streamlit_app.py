@@ -369,8 +369,6 @@ def show_query_page(top_k, min_score, max_depth):
     # Check connection
     if not st.session_state.connected:
         st.warning("⚠️ Please connect to the database first (click 'Connect Now' in sidebar)")
-        if st.button("Initialize Connection"):
-            initialize_orchestrator()
         return
 
     # Query input
