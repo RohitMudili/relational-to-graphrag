@@ -4,12 +4,29 @@
 
 **Transform your relational databases into intelligent, semantically-enriched knowledge graphs with AI-powered retrieval**
 
+🌐 **[Live Demo](https://relational-to-graphrag-lyzr.streamlit.app/)** | Try it now without any setup!
+
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Neo4j 5.x](https://img.shields.io/badge/neo4j-5.x-brightgreen.svg)](https://neo4j.com/)
 [![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o-412991.svg)](https://openai.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 </div>
+
+---
+
+## 🚀 Live Demo
+
+**Access the live application:** [https://relational-to-graphrag-lyzr.streamlit.app/](https://relational-to-graphrag-lyzr.streamlit.app/)
+
+This project is fully deployed and hosted using **Streamlit Community Cloud** for the web interface, with cloud databases powering the backend:
+
+- **Frontend**: Streamlit Community Cloud (free tier) - Provides the interactive web UI with natural language query interface
+- **Graph Database**: Neo4j AuraDB (cloud) - Stores the knowledge graph with 1,158 nodes and 5,946 relationships, all with semantic embeddings
+- **Relational Database**: Neon PostgreSQL (serverless) - Hosts the original Northwind database for schema analysis and data extraction
+- **LLM Provider**: Google Gemini API - Powers query planning, Cypher generation, and result explanations (switched from OpenAI for cost optimization)
+
+The entire system runs serverlessly in the cloud with zero local infrastructure - just open the URL and start querying! All graph embeddings are pre-generated and stored in Neo4j, enabling instant semantic search without regeneration.
 
 ---
 
