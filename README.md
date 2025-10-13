@@ -59,15 +59,7 @@ This is a **production-ready, automated system** that transforms traditional rel
 - **🤖 Natural Language Queries**: Ask questions in plain English
 - **📊 Graph Analytics**: Discover patterns and insights hidden in relationships
 
-### What Problem Does This Solve?
 
-Traditional relational databases excel at structured queries but struggle with:
-- Semantic similarity searches ("find customers like X")
-- Complex relationship traversals (2+ joins)
-- Natural language querying
-- Context-aware retrieval
-
-This system bridges that gap by automatically converting your relational data into a **GraphRAG (Graph Retrieval-Augmented Generation)** system.
 
 ### Real-World Use Cases
 
@@ -323,15 +315,6 @@ relational-to-graphrag/
     └── SAMPLE_QUERIES.md            # 30+ example queries with expected outputs
 ```
 
-### Code Statistics
-
-- **Total Lines**: 4,462 lines of Python code
-- **Modules**: 33 Python files
-- **Node Types Generated**: 11 (from 14 tables)
-- **Edge Types Generated**: 21 relationships
-- **Nodes in Graph**: 1,158 with embeddings
-- **Relationships in Graph**: 5,946
-
 ---
 
 ## 🚀 Installation
@@ -436,8 +419,6 @@ python scripts/run_schema_analyzer.py
 - Uses GPT-4o to generate semantic node/edge labels
 - Outputs: `output/graph_ontology.json`
 
-**Time:** ~30 seconds
-**Cost:** ~$0.05 (OpenAI API)
 
 ### Phase 2: Graph Construction
 
@@ -483,49 +464,6 @@ Query> explain
 ```bash
 streamlit run streamlit_app.py
 ```
-
-**Features:**
-- 🎨 **Professional UI** - Beautiful, intuitive web interface
-- 🔍 **Query Interface** - Natural language input with real-time results
-- 📊 **Statistics Dashboard** - Visual charts and database metrics
-- 💡 **AI Explanations** - Automatic result explanations
-- 📜 **Query History** - Track and review past queries
-- ⚙️ **Configuration Panel** - Test connections and view settings
-- 📥 **Export Results** - Download results as JSON
-
-**Access at:** http://localhost:8501
-
-See [STREAMLIT_GUIDE.md](STREAMLIT_GUIDE.md) for detailed documentation.
-
-## 📚 Phase Documentation
-
-Each phase has comprehensive documentation:
-
-### [PHASE1_COMPLETE.md](PHASE1_COMPLETE.md)
-- Schema analysis architecture
-- Relationship inference algorithms
-- LLM prompting strategies
-- Output format specifications
-
-### [PHASE2_COMPLETE.md](PHASE2_COMPLETE.md)
-- ETL pipeline design
-- Embedding generation process
-- Neo4j optimization strategies
-- Troubleshooting guide
-
-### [PHASE3_COMPLETE.md](PHASE3_COMPLETE.md)
-- Agent architecture
-- Query planning strategies
-- Tool descriptions
-- Integration guide
-
-### [SAMPLE_QUERIES.md](SAMPLE_QUERIES.md)
-- 30+ example queries
-- Expected outputs
-- Query type explanations
-- Parameter tuning guide
-
----
 
 ## 💡 Usage Examples
 
@@ -609,63 +547,6 @@ Each phase has comprehensive documentation:
 
 ---
 
-## ⚙️ Configuration
-
-### Environment Variables (.env)
-
-```env
-# OpenAI Configuration
-OPENAI_API_KEY=sk-...                    # Required: Your API key
-OPENAI_MODEL=gpt-4o                      # LLM for reasoning
-OPENAI_EMBEDDING_MODEL=text-embedding-3-small  # Embedding model
-
-# PostgreSQL (Source Database)
-POSTGRES_HOST=localhost
-POSTGRES_PORT=5433                       # Note: 5433 to avoid conflicts
-POSTGRES_DB=northwind
-POSTGRES_USER=postgres
-POSTGRES_PASSWORD=postgres123
-
-# Neo4j (Graph Database)
-NEO4J_URI=bolt://localhost:7687
-NEO4J_USER=neo4j
-NEO4J_PASSWORD=neo4jpassword
-
-# Performance Tuning
-BATCH_SIZE=1000                          # ETL batch size
-MAX_WORKERS=4                            # Parallel workers
-```
-
-### Database Access
-
-**PostgreSQL (Northwind Source Data)**
-- **URL**: `localhost:5433`
-- **Database**: `northwind`
-- **Tables**: 14 (categories, customers, employees, orders, products, etc.)
-
-**Neo4j (Knowledge Graph)**
-- **Browser**: http://localhost:7474
-- **Username**: `neo4j`
-- **Password**: `neo4jpassword`
-- **Bolt URL**: `bolt://localhost:7687`
-
-**Useful Neo4j Queries:**
-```cypher
-// View node counts
-MATCH (n) RETURN labels(n) as type, count(*) as count
-
-// View relationship types
-MATCH ()-[r]->() RETURN type(r), count(*) ORDER BY count(*) DESC
-
-// Sample nodes with embeddings
-MATCH (n:Customer) WHERE n.embedding IS NOT NULL RETURN n LIMIT 5
-
-// Check vector indexes
-CALL db.indexes()
-```
-
----
-
 ## 🛠️ Technologies
 
 ### Core Stack
@@ -687,18 +568,6 @@ CALL db.indexes()
 - `pandas` - Data manipulation
 - `sqlalchemy` - SQL toolkit
 
-**AI & Embeddings:**
-- `openai` - OpenAI API client
-- `langchain` - LLM framework
-- `langgraph` - Agent orchestration
-- `sentence-transformers` - Local embeddings (optional)
-
-**Configuration & Utilities:**
-- `pydantic` - Settings management
-- `python-dotenv` - Environment variables
-- `rich` - Terminal formatting
-- `click` - CLI framework
-
 ### Architecture Patterns
 
 - **ETL Pipeline**: Extract-Transform-Load for data migration
@@ -714,19 +583,6 @@ CALL db.indexes()
 - 14 tables → 1,158 nodes
 - ~10,000 rows → 5,946 relationships
 - Query response: <5 seconds
-
-**Projected Scalability:**
-- ✅ **10K-100K nodes**: Excellent performance with vector indexes
-- ⚠️ **100K-1M nodes**: Consider batch embedding generation, may need sharding
-- ❌ **1M+ nodes**: Requires distributed Neo4j cluster and optimization
-
-### Optimization Tips
-
-1. **Neo4j Indexes**: Automatically created for node IDs and vector search
-2. **Batch Size**: Adjust `BATCH_SIZE` in `.env` (default: 1000)
-3. **Embedding Caching**: Embeddings persist in Neo4j, no regeneration needed
-4. **Connection Pooling**: Implemented in Neo4j driver
-5. **Query Result Limits**: Use `--top-k` parameter to limit results
 
 
 ## 🎓 How It Works: Deep Dive
