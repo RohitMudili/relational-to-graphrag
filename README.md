@@ -6,6 +6,13 @@
 
 🌐 **[Live Demo](https://relational-to-graphrag-lyzr.streamlit.app/)** | Try it now without any setup!
 
+**Explainatory demo video**
+
+
+https://github.com/user-attachments/assets/719d4634-f96f-4f1b-8ab8-330a8b9ab3d2
+
+
+
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
 [![Neo4j 5.x](https://img.shields.io/badge/neo4j-5.x-brightgreen.svg)](https://neo4j.com/)
 [![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o-412991.svg)](https://openai.com/)
